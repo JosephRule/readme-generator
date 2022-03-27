@@ -1,26 +1,36 @@
 // TODO: Include packages needed for this application
+const fs = require("fs");
 const inquirer = require("inquirer");
 const generateMarkdown = require("./utils/generateMarkdown");
 
 // TODO: Create an array of questions for user input
-const questions = ["Enter the project title",
-                   "Enter your project description",
-                   "Enter installation instructions",
-                   "usage",
-                   "contributing",
-                   "tests",
-                   "questions"];
-
-// I go thorugh the list of questions?
-// i make a long inquierer prompt to ask all the questions
-// log the object to the screen
+const licenses = [
+    {
+    name: "Apache License 2.0",
+    value: "this stuff",
+    badge: "[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)]",
+    link: "https://opensource.org/licenses/Apache-2.0"
+     },
+    {
+    name: "GNU General Public License v3.0",
+    value: "this stuff",
+    badge: "[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)]",
+    link: "https://www.gnu.org/licenses/gpl-3.0"
+    },
+    {
+    name: "MIT License",
+    value: "this stuff",
+    badge: "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)]",
+    link: "https://opensource.org/licenses/MIT"
+        }
+]
 
 const promptReadMe = () => {
     return inquirer.prompt([
         {
             type: 'input',
             name: 'title',
-            message: 'What is the project title?',
+            message: '(Required) What is the project title?',
             validate: nameInput => {
                 if (nameInput) {
                   return true;
@@ -33,7 +43,7 @@ const promptReadMe = () => {
         {
             type: 'input',
             name: 'description',
-            message: 'Enter the project description',
+            message: '(Required) Enter the project description',
             validate: nameInput => {
                 if (nameInput) {
                   return true;
@@ -65,7 +75,8 @@ const promptReadMe = () => {
             type: 'list',
             name: 'license',
             message: 'Select your license.',
-            choices: ["A", "B", "C"]
+            choices: licenses,
+            default: false
         },
         {
             type: 'input',
@@ -75,23 +86,41 @@ const promptReadMe = () => {
         },
         {
             type: 'input',
-            name: 'contact',
-            message: 'Enter your contact information',
+            name: 'questions',
+            message: 'Enter your github information',
             default: false
         }
     ])
-    .then(ProjectData => {
-        console.log(ProjectData);
-    })
 }
 
-promptReadMe();
+
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(data) {
+    return new Promise((resolve, reject) => {
+        fs.writeFile('./dist/README.md', generateMarkdown(data), err => {
+            if (err) {
+                reject(err);
+                return;
+            }
+
+            resolve({
+                ok: true,
+                message: "File Created!"
+            });
+        });
+    });
+}
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+    promptReadMe()
+    .then(answers => {
+        console.log(answers)
+        writeToFile(answers)
+        console.log("ReadMe written!")
+    })
+}
 
 // Function call to initialize app
 init();
