@@ -7,22 +7,23 @@ const generateMarkdown = require("./utils/generateMarkdown");
 const licenses = [
     {
     name: "Apache License 2.0",
-    value: "this stuff",
-    badge: "[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)]",
-    link: "https://opensource.org/licenses/Apache-2.0"
-     },
+    value: {name:"Apache License 2.0",
+            svg:"https://img.shields.io/badge/License-Apache_2.0-blue.svg",
+            link:"https://opensource.org/licenses/Apache-2.0"}
+    },
     {
     name: "GNU General Public License v3.0",
-    value: "this stuff",
-    badge: "[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)]",
-    link: "https://www.gnu.org/licenses/gpl-3.0"
+    value: {name: "GPL v3",
+            svg: "https://img.shields.io/badge/License-GPLv3-blue.svg",
+            link: "https://www.gnu.org/licenses/gpl-3.0"}
     },
     {
     name: "MIT License",
-    value: "this stuff",
-    badge: "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)]",
-    link: "https://opensource.org/licenses/MIT"
-        }
+    value: {name:"MIT",
+            svg:"https://img.shields.io/badge/License-MIT-yellow.svg",
+            link: "https://opensource.org/licenses/MIT"
+    }
+    }
 ]
 
 const promptReadMe = () => {
