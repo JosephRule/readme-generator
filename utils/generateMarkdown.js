@@ -11,6 +11,8 @@ function renderLicense(license) {
   `;
 }
 
+
+
 function renderInstallation(installation) {
   if (!installation) {
     return '';
@@ -57,7 +59,13 @@ function renderQuestions(questions) {
 }
 
 function renderTableOfContents(data) {
-  console.log("Toc function ran")
+  const { title, description, ...tableOfContents } = data
+  const sections = Object.keys(tableOfContents).filter(key => tableOfContents[key])
+  console.log(sections)
+  const sectionsTitle = sections.map(key => key.charAt(0).toUpperCase() + key.slice(1));
+  console.log(sectionsTitle)
+  return sectionsTitle.map(key => `- [${key}](#${key})`).join("\n")
+
 }
 
 // TODO: Create a function to generate markdown for README
@@ -65,7 +73,7 @@ function generateMarkdown(data) {
   return `# ${data.title}
   ## Project Description
   ${data.description}
-  
+
   ![image](${data.license.svg})
 
   ${renderTableOfContents(data)}
