@@ -61,10 +61,10 @@ function renderTests(tests) {
 
 function renderQuestions(questions) {
   if (!questions) {
-    return '';
+    return
   }
-  return `## Questions
-  ${questions}
+  url = `https://github.com/${questions}`;
+  return `hit me up on [Github](${url})
   `
 }
 
