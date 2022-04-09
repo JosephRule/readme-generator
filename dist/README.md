@@ -1,15 +1,20 @@
-# blank
+# Team Portfolio Generator 
   ## Project Description
-  blank
+  An application written in nodeJS to generate a webpage that displays team members input by the user. Input captured using inquirer, tests written using Jest.
 
-  ![image](https://img.shields.io/badge/License-Apache_2.0-blue.svg)
+  ![image](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-  - [License](#License)
+  - [Installation](#Installation)
+- [License](#License)
+- [Questions](#Questions)
+  ## Installation
+  Install node package manager and execute index.js file
   
   
   
   
-  undefined
+  hit me up on [Github](https://github.com/www.github.com/josephrule)
+  
   ## License
-  This repo is licensed under the Apache License 2.0 license. More information can be found [here](https://opensource.org/licenses/Apache-2.0)
+  This repo is licensed under the MIT license. More information can be found [here](https://opensource.org/licenses/MIT)
   
